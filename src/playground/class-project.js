@@ -48,22 +48,32 @@ const onFormSubmit = (e) => {
   const age = e.target.elements.age.value;
   const name = e.target.elements.name.value;
   if (shirtColor, age, name) {
-    app.numbers.push(shirt(shirtColor) + ages(age) + names(name));
-    console.log(app.numbers);
-    renderListApp();
+    if (isNaN(age) === false) {
+      app.numbers.push(shirt(shirtColor) + ages(age) + names(name));
+      renderListApp();
+    } else {
+      app.numbers.push('Age is not a valid number');
+      renderListApp();
+    }
   }
 };
 
 const shirt = (shirtColor) => {
-  return letters[shirtColor.charAt(0)] * 3;
+  const shirtLower = shirtColor.toLowerCase();
+  console.log(shirtLower);
+  return letters[shirtLower.charAt(0)] * 3;
 };
 
 const ages = (age) => {
-  return age * 4;
+  if (isNaN(age) === false) {
+    return age * 4;
+  }
+
 };
 
 const names = (name) => {
-  return letters[name.charAt(0)] * 5;
+  const nameLower = name.toLowerCase();
+  return letters[nameLower.charAt(0)] * 5;
 };
 
 
@@ -85,7 +95,7 @@ const renderListApp = () => {
         <input type="text" name="name" placeholder="Name"/>
         <button>Generate</button>
       </form>
-      
+
       {app.numbers.length >= 1 && <h2>{app.numbers + ','}</h2>}
       <h1>{app.title2}</h1>
       <p>{app.subtitle2}</p>
