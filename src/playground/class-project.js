@@ -52,7 +52,7 @@ const onFormSubmit = (e) => {
       app.numbers.push(shirt(shirtColor) + ages(age) + names(name));
       renderListApp();
     } else {
-      app.numbers.push('Age is not a valid number');
+      app.numbers.push(`${age} is not a number. Please enter a valid number!`);
       renderListApp();
     }
   }
