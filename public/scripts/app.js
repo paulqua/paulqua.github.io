@@ -50,22 +50,31 @@ var onFormSubmit = function onFormSubmit(e) {
   var age = e.target.elements.age.value;
   var name = e.target.elements.name.value;
   if (shirtColor, age, name) {
-    app.numbers.push(shirt(shirtColor) + ages(age) + names(name));
-    console.log(app.numbers);
-    renderListApp();
+    if (isNaN(age) === false) {
+      app.numbers.push(shirt(shirtColor) + ages(age) + names(name));
+      renderListApp();
+    } else {
+      app.numbers.push('Age is not a valid number');
+      renderListApp();
+    }
   }
 };
 
 var shirt = function shirt(shirtColor) {
-  return letters[shirtColor.charAt(0)] * 3;
+  var shirtLower = shirtColor.toLowerCase();
+  console.log(shirtLower);
+  return letters[shirtLower.charAt(0)] * 3;
 };
 
 var ages = function ages(age) {
-  return age * 4;
+  if (isNaN(age) === false) {
+    return age * 4;
+  }
 };
 
 var names = function names(name) {
-  return letters[name.charAt(0)] * 5;
+  var nameLower = name.toLowerCase();
+  return letters[nameLower.charAt(0)] * 5;
 };
 
 var pseudoRandom = function pseudoRandom() {
