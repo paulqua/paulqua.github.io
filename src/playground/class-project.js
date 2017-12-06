@@ -1,4 +1,5 @@
 const app = {
+  main: 'How Can a Computer Generate a Random Number and Why Does it Matter?',
   title1: 'True Random Number Generator',
   subtitle1: 'Type the information below and click generate',
   title2: 'Pseudorandom Number Generator',
@@ -86,7 +87,8 @@ const pseudoRandom = () => {
 const renderListApp = () => {
   const template = (
     <div>
-      <h1>{app.title1}</h1>
+      <h1>{app.main}</h1>
+      <h2>{app.title1}</h2>
       {app.subtitle1 && <p>{app.subtitle1}</p>}
 
       <form onSubmit={onFormSubmit}>
@@ -96,11 +98,11 @@ const renderListApp = () => {
         <button>Generate</button>
       </form>
 
-      {app.numbers.length >= 1 && <h2>{app.numbers + ','}</h2>}
-      <h1>{app.title2}</h1>
+      {app.numbers.length >= 1 && <h3>{app.numbers + ','}</h3>}
+      <h2>{app.title2}</h2>
       <p>{app.subtitle2}</p>
       <button onClick={pseudoRandom}>Generate</button>
-      {app.random.length >= 1 && <h2>{app.random + ','}</h2>}
+      {app.random.length >= 1 && <h3>{app.random + ','}</h3>}
     </div>
   );
   ReactDOM.render(template, appRoot);

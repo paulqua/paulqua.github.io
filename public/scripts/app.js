@@ -1,6 +1,7 @@
 'use strict';
 
 var app = {
+  main: 'How Can a Computer Generate a Random Number and Why Does it Matter?',
   title1: 'True Random Number Generator',
   subtitle1: 'Type the information below and click generate',
   title2: 'Pseudorandom Number Generator',
@@ -89,6 +90,11 @@ var renderListApp = function renderListApp() {
     React.createElement(
       'h1',
       null,
+      app.main
+    ),
+    React.createElement(
+      'h2',
+      null,
       app.title1
     ),
     app.subtitle1 && React.createElement(
@@ -109,12 +115,12 @@ var renderListApp = function renderListApp() {
       )
     ),
     app.numbers.length >= 1 && React.createElement(
-      'h2',
+      'h3',
       null,
       app.numbers + ','
     ),
     React.createElement(
-      'h1',
+      'h2',
       null,
       app.title2
     ),
@@ -129,7 +135,7 @@ var renderListApp = function renderListApp() {
       'Generate'
     ),
     app.random.length >= 1 && React.createElement(
-      'h2',
+      'h3',
       null,
       app.random + ','
     )
