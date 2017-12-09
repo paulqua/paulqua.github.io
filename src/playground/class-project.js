@@ -4,7 +4,7 @@ const app = {
   subtitle1: 'Type the information below and click generate',
   title2: 'Pseudorandom Number Generator',
   subtitle2: 'Click the generate button to get your random number',
-  numbers: [],
+  numbers: [0],
   random: []
 };
 
@@ -37,11 +37,14 @@ const letters = {
   z: 66
 };
 
-// if (option) {
-//   app.options.push(option);
-//   e.target.elements.option.value = '';
-//   renderListApp();
-// }
+const alreadyExists = (ranNum) => {
+  const arrayLength = app.numbers.length;
+  for (var i = 0; i < arrayLength; i++) {
+    if (ranNum === app.numbers[i]) {
+      return true;
+    };
+  };
+};
 
 const onFormSubmit = (e) => {
   e.preventDefault();
@@ -50,18 +53,24 @@ const onFormSubmit = (e) => {
   const name = e.target.elements.name.value;
   if (shirtColor, age, name) {
     if (isNaN(age) === false) {
-      app.numbers.push(shirt(shirtColor) + ages(age) + names(name));
-      renderListApp();
+      const ranNum = shirt(shirtColor) + ages(age) + names(name);
+      if (alreadyExists(ranNum)) {
+        console.log('equals true!');
+        app.numbers.push(ranNum * app.numbers.length);
+        } else {
+          console.log('else statement');
+          app.numbers.push(ranNum);
+      };
+
     } else {
-      app.numbers.push(`${age} is not a number. Please enter a valid number!`);
-      renderListApp();
-    }
-  }
+          app.numbers.push(`${age} is not a number. Please enter a valid number!`);
+      };
+    renderListApp();
+  };
 };
 
 const shirt = (shirtColor) => {
   const shirtLower = shirtColor.toLowerCase();
-  console.log(shirtLower);
   return letters[shirtLower.charAt(0)] * 3;
 };
 
@@ -98,7 +107,7 @@ const renderListApp = () => {
         <button>Generate</button>
       </form>
 
-      {app.numbers.length >= 1 && <h3>{app.numbers + ','}</h3>}
+      {app.numbers.length >= 2 && <h3>{app.numbers.slice(1, ) + ','}</h3>}
       <h2>{app.title2}</h2>
       <p>{app.subtitle2}</p>
       <button onClick={pseudoRandom}>Generate</button>
