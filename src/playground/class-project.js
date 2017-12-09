@@ -1,5 +1,6 @@
 const app = {
   main: 'How Can a Computer Generate a Random Number and Why Does it Matter?',
+  author: 'Paul Qua',
   title1: 'True Random Number Generator',
   subtitle1: 'Type the information below and click generate',
   title2: 'Pseudorandom Number Generator',
@@ -97,6 +98,7 @@ const renderListApp = () => {
   const template = (
     <div>
       <h1>{app.main}</h1>
+      <h1>By {app.author}</h1>
       <h2>{app.title1}</h2>
       {app.subtitle1 && <p>{app.subtitle1}</p>}
 

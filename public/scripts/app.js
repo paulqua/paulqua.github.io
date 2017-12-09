@@ -2,6 +2,7 @@
 
 var app = {
   main: 'How Can a Computer Generate a Random Number and Why Does it Matter?',
+  author: 'Paul Qua',
   title1: 'True Random Number Generator',
   subtitle1: 'Type the information below and click generate',
   title2: 'Pseudorandom Number Generator',
@@ -99,6 +100,12 @@ var renderListApp = function renderListApp() {
       'h1',
       null,
       app.main
+    ),
+    React.createElement(
+      'h1',
+      null,
+      'By ',
+      app.author
     ),
     React.createElement(
       'h2',
